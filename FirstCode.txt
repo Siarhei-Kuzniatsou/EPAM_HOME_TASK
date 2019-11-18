@@ -1,1 +1,2 @@
 It is new code.
+Second line.
