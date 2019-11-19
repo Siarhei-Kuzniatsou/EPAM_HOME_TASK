@@ -7,5 +7,6 @@ public class HowFactarial {
         if (num == 1) factarial.whileFactarial(parametr);
         if (num == 2) factarial.doFactarial(parametr);
         if (num == 3) factarial.forFactarial(parametr);
+        if (num == 4) System.out.println(factarial.recFsctarial(parametr));
     };
 }

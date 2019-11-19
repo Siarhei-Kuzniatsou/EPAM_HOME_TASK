@@ -35,4 +35,11 @@ public class Factarial {
         }
         System.out.println(result);
     }
+
+    public int recFsctarial(int cout) {
+        result = 1;
+        for (int i = 1; i<=cout; i++)  result *= i;
+        return result;
+    }
+
 }

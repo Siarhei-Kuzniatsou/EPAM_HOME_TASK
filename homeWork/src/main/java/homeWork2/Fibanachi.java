@@ -5,6 +5,7 @@ public class Fibanachi {
     private int temp = 0;
     private int tempDO;
 
+
     void doFibonachi(int count) {
         int i = 1;
         System.out.print("0 ");
@@ -44,4 +45,7 @@ public class Fibanachi {
             result = temp + tempDO;
         }
     }
+
+
+
 }
