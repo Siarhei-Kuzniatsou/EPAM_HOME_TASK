@@ -11,9 +11,12 @@ public class WhatDo {
     HowFibanachi howfibanachi = new HowFibanachi();
     HowFactarial howFactarial = new HowFactarial();
     private void whatDo(int num, int method, int parametr) {
-
-        if(num == 1) howfibanachi.howFibanachi(method, parametr);
-        if(num == 2) howFactarial.howFactarial(method, parametr);
+        switch (num) {
+            case 1 : howfibanachi.howFibanachi(method, parametr);
+            break;
+            case 2 : howFactarial.howFactarial(method, parametr);
+            break;
+        }
     }
 
 }
