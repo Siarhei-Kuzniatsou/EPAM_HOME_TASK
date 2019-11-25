@@ -1,27 +1,31 @@
 package homeWork4;
 import java.util.*;
 
-public class Card {
+ class Card {
 
     void addCard (String name){
         HomeWork4.cards.put(name, 0);
-        new Start().option();
+        Start.option();
     };
     void addCard (String name, int balance){
         HomeWork4.cards.put(name, balance);
-        new Start().option();
+        Start.option();
     };
-    public void balance (String name) {
+     void balance (String name) {
         System.out.println("Balance:" +  HomeWork4.cards.get(name));
-        new Start().option();
+        Start.option();
     };
-    public void replenish (String name, int cash) {
+     void balance(String name, double conversion){
+         System.out.println("Balance:" +  HomeWork4.cards.get(name) * conversion);
+         Start.option();
+     };
+     void replenish (String name, int cash) {
         HomeWork4.cards.put(name,  HomeWork4.cards.get(name) + cash);
-        new Start().option();
+        Start.option();
     };
-    public void decrease (String name, int cash) {
+     void decrease (String name, int cash) {
         HomeWork4.cards.put(name, HomeWork4.cards.get(name) - cash);
-        new Start().option();
+        Start.option();
     };
 
 }

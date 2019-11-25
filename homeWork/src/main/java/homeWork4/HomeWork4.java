@@ -1,6 +1,5 @@
 package homeWork4;
 import java.util.HashMap;
-import java.util.IdentityHashMap;
 import java.util.Map;
 
 public class HomeWork4 {
