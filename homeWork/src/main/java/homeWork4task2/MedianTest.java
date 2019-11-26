@@ -1,3 +1,5 @@
+package homeWork4task2;
+
 import homeWork4task2.Median;
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,7 +12,7 @@ public class MedianTest {
     @Test
     public void testIntMedian() {
         float result = Median.median(new int[] { 5, 5, 5, 100, 5, 5, 5, 5 });
-        Assert.assertEquals(7, result, 0);
+        Assert.assertEquals(5, result, 0);
     }
 
     @Test
