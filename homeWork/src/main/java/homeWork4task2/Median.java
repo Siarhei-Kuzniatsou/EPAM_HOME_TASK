@@ -3,27 +3,49 @@ package homeWork4task2;
 import java.util.*;
 
 public class Median {
-    public static void median(Integer[] arr){
-        List<Integer> arrList = Arrays.asList(arr);
-//        for(int i=0; i<arr.length; i++) arrList.add(arr[i]);
-        Collections.sort(arrList);
-        if (isEven(arr.length)) {
-            System.out.println((arrList.get(arrList.size() / 2) + arrList.get(arrList.size() / 2 +1) / 2));
-        }
-        else {
-            Collections.sort(arrList);
-            System.out.println((arrList.get(arrList.size() / 2)));
-        }
+    public static float median(int[] arr) {
 
+        for (int i = 0; i < arr.length; i++) {
+            int min = arr[i];
+            int min_i = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < min) {
+                    min = arr[j];
+                    min_i = j;
+                }
+            }
+            if (i != min_i) {
+                int tmp = arr[i];
+                arr[i] = arr[min_i];
+                arr[min_i] = tmp;
+            }
         }
+        return isEven(arr.length) ? ((float) (arr[arr.length / 2 - 1] + arr[arr.length / 2]) / 2) : (arr[((arr.length - 1 )/ 2)]);
+    }
 
 
-    public static void median(double [] arr){
+    public static double median(double[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            double min = arr[i];
+            int min_i = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < min) {
+                    min = arr[j];
+                    min_i = j;
+                }
+            }
+            if (i != min_i) {
+                double tmp = arr[i];
+                arr[i] = arr[min_i];
+                arr[min_i] = tmp;
+            }
+        }
+        return isEven(arr.length) ? ((arr[arr.length / 2 - 1] + arr[arr.length / 2]) / 2) : (arr[(arr.length / 2)]);
 
     }
 
-    static boolean isEven(int size){
-        return (size%2 == 0);
+    static boolean isEven(int size) {
+        return (size % 2 == 0);
     }
 
 
