@@ -8,6 +8,11 @@ import org.junit.Test;
  * Test suite for Median utility class.
  */
 public class MedianTest {
+    @Test
+    public void test(){
+        double a = Median.median(new double[] {3.0});
+        Assert.assertEquals(3.0, a, 0);
+    }
 
     @Test
     public void testIntMedian() {
