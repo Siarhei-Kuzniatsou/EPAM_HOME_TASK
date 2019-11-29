@@ -1,12 +1,11 @@
 package homeWork2;
 
-public class Fibanachi {
+public class Fibonacci {
     private int result = 1;
     private int temp = 0;
     private int tempDO;
 
-
-    void doFibonachi(int count) {
+    void doFibonacci(int count) {
         int i = 1;
         System.out.print("0 ");
         do {
@@ -20,9 +19,7 @@ public class Fibanachi {
         } while (i != count);
     }
 
-
-
-    void whileFibonachi(int count) {
+    void whileFibonacci(int count) {
         System.out.print("0 ");
         int i = 1;
         while (i < count) {
@@ -34,9 +31,7 @@ public class Fibanachi {
         }
     }
 
-
-
-    void forFibonachi(int count) {
+    void forFibonacci(int count) {
         System.out.print("0 ");
         for (int i = 1; i < count; i++) {
             System.out.print(result + " ");
@@ -45,7 +40,6 @@ public class Fibanachi {
             result = temp + tempDO;
         }
     }
-
 
 
 }

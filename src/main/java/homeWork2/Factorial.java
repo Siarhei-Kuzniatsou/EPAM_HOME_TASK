@@ -1,9 +1,9 @@
 package homeWork2;
 
-public class Factarial {
+public class Factorial {
     private int result = 1;
 
-    void doFactarial(int count) {
+    void doFactorial(int count) {
         if (count == 0) System.out.println(result);
         else {
             int i = 1;
@@ -15,7 +15,7 @@ public class Factarial {
         }
     }
 
-    void whileFactarial(int count) {
+    void whileFactorial(int count) {
         if (count == 0) System.out.println(result);
         else {
             int i = 1;
@@ -28,7 +28,7 @@ public class Factarial {
     }
 
 
-    void forFactarial(int count) {
+    void forFactorial(int count) {
         if (count == 0) System.out.println(result);
         for (int i = 1; i < count + 1; i++) {
             result = result * i;
@@ -36,9 +36,9 @@ public class Factarial {
         System.out.println(result);
     }
 
-    public int recFsctarial(int cout) {
+    public int recFactorial(int count) {
         result = 1;
-        for (int i = 1; i<=cout; i++)  result *= i;
+        for (int i = 1; i <= count; i++) result *= i;
         return result;
     }
 
