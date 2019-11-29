@@ -1,0 +1,15 @@
+*.iml
+../target/
+/.idea/
+.vscode/
+# Eclipse
+.classpath
+.project
+.settings/
+.factorypath
+# Intellij
+*.iws
+# Maven
+log/
+target/
+build/
