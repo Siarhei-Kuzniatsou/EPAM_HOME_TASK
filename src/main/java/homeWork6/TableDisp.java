@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TableDisp {
     private static List<Employer> table;
-    private static TableDisp tableDisp;
+    private static TableDisp tableDisp = null;
     static FileDisp fileDisp = FileDisp.getInstance();
 
     public TableDisp(String param) {

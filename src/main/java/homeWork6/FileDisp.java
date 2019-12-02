@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FileDisp {
-    private static FileDisp fileDisp;
+    private static FileDisp fileDisp = null;
     private File file;
     private static final String nameFile = "Employers.txt";
     TableDisp tableDisp = TableDisp.getInstance();
