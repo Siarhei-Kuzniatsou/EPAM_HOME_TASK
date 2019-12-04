@@ -54,7 +54,6 @@ public class FileDisp implements IRepository {
 
 
     public static IRepository getInstance(){
-        if (fileDisp == null) return new FileDisp();
-        else return fileDisp;
+        return new FileDisp();
     }
 }
