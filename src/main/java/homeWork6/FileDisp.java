@@ -10,22 +10,33 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class FileDisp {
+public class FileDisp implements IRepository {
     private static FileDisp fileDisp = null;
     private File file;
     private static final String nameFile = "Employers.txt";
-    TableDisp tableDisp = TableDisp.getInstance();
-
-    public FileDisp() {
+    private Manager tableDisp;
+    private FileDisp() {
         file = new File(nameFile);
-//        this.tableDisp = tableDisp;
     }
 
+    @Override
     public boolean isEmpty() {
         return file.length() == 0;
     }
 
-    public void readFile() {
+    @Override
+    public void save(List<Employer> table) throws IOException {
+        FileWriter file = new FileWriter(nameFile);
+        for(int i = 0; i != table.size(); i++) {
+            file.write(String.valueOf(table.get(i)));
+            file.write("\n");
+        }
+        file.close();
+    }
+
+    @Override
+    public void read(Manager tableDisp) {
+        this.tableDisp = tableDisp;
         List<String> table = new ArrayList<>();
 
         try (Stream<String> lines = Files.lines(Paths.get(nameFile))) {
@@ -37,20 +48,12 @@ public class FileDisp {
         for (String s : table) {
             String[] array = s.split(" ");
             Employer employer = new Employer(Integer.parseInt(array[0]), array[1], array[2]);
-            tableDisp.addInTable(employer);
+            tableDisp.add(employer);
         }
     }
 
-    public void saveFile(List<Employer> table) throws IOException {
-        FileWriter file = new FileWriter(nameFile);
-        for(int i = 0; i != table.size(); i++) {
-            file.write(String.valueOf(table.get(i)));
-            file.write("\n");
-            }
-        file.close();
-    }
 
-    public static FileDisp getInstance(){
+    public static IRepository getInstance(){
         if (fileDisp == null) return new FileDisp();
         else return fileDisp;
     }

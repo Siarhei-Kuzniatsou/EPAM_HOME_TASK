@@ -1,45 +1,50 @@
 package homeWork6;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 
-public class TableDisp {
+public class TableDisp implements Manager {
     private static List<Employer> table;
     private static TableDisp tableDisp = null;
-    static FileDisp fileDisp = FileDisp.getInstance();
+    private IRepository fileDisp;
 
-    public TableDisp(String param) {
+    private TableDisp(String param) {
         table = param.equals("ArrayList") ? new ArrayList<>() : new LinkedList<>();
        }
 
-    public  List<Employer> getTable(String param) {
-        return table;
+    public static Manager getInstance(){
+        if (tableDisp == null) return new TableDisp("ArrayList");
+        else return tableDisp;
     }
 
-    public void addInTable(Employer employer){
+    @Override
+    public void add(Employer employer) {
         table.add(employer);
     }
 
-    public  void saveTable() throws IOException {
-        fileDisp.saveFile(table);
-    }
-
-    public  void delFromTable(int id){
+    @Override
+    public void remove(int id) {
         Employer employer =  table.stream()
                 .filter(item -> item.getId() == id)
                 .findFirst()
                 .get();
         table.remove(employer);
-
-            }
-
-    public static TableDisp getInstance(){
-        if (tableDisp == null) return new TableDisp("ArrayList");
-        else return tableDisp;
     }
+
+    @Override
+    public void show(String param) {
+        for (int i = 0; i != table.size(); i++) {
+                 System.out.println(table.get(i));
+             }
+    }
+
+    @Override
+    public List<Employer> get() {
+        return table;
+    }
+
 
 }
 
