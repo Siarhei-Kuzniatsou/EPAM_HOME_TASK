@@ -16,6 +16,9 @@ public class Employer {
      int getId() {
         return id;
     }
+    String getFirstname() {return firstname;}
+    String getLastname() {return lastname;}
+
 
     @Override
     public String toString() {

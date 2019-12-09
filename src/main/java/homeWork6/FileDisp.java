@@ -14,8 +14,9 @@ public class FileDisp implements IRepository {
     private static FileDisp fileDisp = null;
     private File file;
     private static final String nameFile = "Employers.txt";
-    private Manager tableDisp;
+    private ITable tableDisp;
     private FileDisp() {
+
         file = new File(nameFile);
     }
 
@@ -35,7 +36,7 @@ public class FileDisp implements IRepository {
     }
 
     @Override
-    public void read(Manager tableDisp) {
+    public void read(ITable tableDisp) {
         this.tableDisp = tableDisp;
         List<String> table = new ArrayList<>();
 
@@ -53,7 +54,9 @@ public class FileDisp implements IRepository {
     }
 
 
+
     public static IRepository getInstance(){
-        return new FileDisp();
+        if (fileDisp == null) return new FileDisp();
+        else return fileDisp;
     }
 }

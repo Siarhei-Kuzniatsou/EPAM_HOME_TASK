@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class TableDisp implements Manager {
+public class TableDisp implements ITable {
     private static List<Employer> table;
     private static TableDisp tableDisp = null;
     private IRepository fileDisp;
@@ -14,9 +14,8 @@ public class TableDisp implements Manager {
         table = param.equals("ArrayList") ? new ArrayList<>() : new LinkedList<>();
        }
 
-    public static Manager getInstance(){
-        if (tableDisp == null) return new TableDisp("ArrayList");
-        else return tableDisp;
+    public static ITable getInstance(){
+        return new TableDisp("ArrayList");
     }
 
     @Override

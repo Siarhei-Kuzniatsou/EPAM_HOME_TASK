@@ -3,13 +3,18 @@ package homeWork6;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 
-public class Menu {
+public class MenuFile {
 
-    static void menu() throws IOException {
+    static void menu(String method) throws IOException, SQLException, ClassNotFoundException {
         int numInt = 0;
-        IRepository fileDisp = FileDisp.getInstance();
-        Manager tableDisp = TableDisp.getInstance();
+        IRepository fileDisp = null;
+        ITable tableDisp = TableDisp.getInstance();
+        switch (method){
+            case "File": fileDisp = FileDisp.getInstance(); break;
+            case "SQLite": fileDisp = SQLiteDisp.getInstance(); break;
+        }
 
         if (!fileDisp.isEmpty()) {
             System.out.println("Do you want to read file? Y or N:");
