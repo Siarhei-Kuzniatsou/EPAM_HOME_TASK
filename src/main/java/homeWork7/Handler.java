@@ -14,8 +14,10 @@ public class Handler implements IHandler{
                 System.out.println("String is empty"); return null;
             default:
                 TreeSet<String> treeSet = new TreeSet<>();
-                String[] temp = textLower.split("[\\s\\W]");
-                for (String str:temp) treeSet.add(str);
+                String[] temp = textLower.split("[\\W]");
+                for (String str:temp) {
+                    if (!str.equals("")) treeSet.add(str);
+                }
                 return treeSet;
         }
 

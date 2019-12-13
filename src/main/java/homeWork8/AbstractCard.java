@@ -3,40 +3,40 @@ package homeWork8;
 public abstract class AbstractCard implements ICard{
     private String name;
     private int cash = 0;
-    private CardType type = CardType.DEBIT;
-    protected IBaseCard iBaseCard = CardBase.getInstance();
+    private CardType type = null;
     protected static ErrorType error = ErrorType.ERROR_CARD;
 
     public AbstractCard(String name, int cash, CardType type) {
         this.name = name;
         this.cash = cash;
-        if (type.equals("credit")) this.type = CardType.CREDIT;
+        this.type = type;
     }
 
     public int getCash() {
         return cash;
     }
 
+    public String setCash(int cash) {
+        this.cash = cash;
+        return "GOOD!";
+    }
+
+    @Override
+    public  AbstractCard addNewCard(String name, int cash, CardType type) {
+//        switch (type){
+//            case DEBIT: return new CardDebit(name, cash, type);
+//            case CREDIT:return new CardCredit(name, cash, type);
+//            default:
+//                System.out.println(error);
+//        }
+        return null;
+    }
+
     public CardType getType() {
         return type;
     }
 
-    @Override
-    public String toString() {
-        return "Card{" +
-                "name='" + name + '\'' +
-                ", cash=" + cash +
-                '}';
+    public void setType(CardType type) {
+        this.type = type;
     }
-
-    public String addCash(String name, int cash) {
-        if (iBaseCard.containCard(name) && cash > 0) {
-            AbstractCard card = iBaseCard.getCard(name);
-            iBaseCard.addNewCard(name, card.getCash() + cash, card.getType());
-            return "Good!";
-        }
-        return error.toString();
-    }
-
-
 }

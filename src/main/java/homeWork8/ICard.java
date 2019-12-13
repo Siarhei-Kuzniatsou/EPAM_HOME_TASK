@@ -3,7 +3,8 @@ package homeWork8;
 import javax.smartcardio.Card;
 
 public interface ICard {
-    String addCash(String name, int cash);
-    String reduceCash(String name, int cash);
-//    Card getCard(String name, int cash, String type);
+    String reduceCash(int cash);
+    String setCash(int cash);
+    int getCash();
+    AbstractCard addNewCard(String name, int cash, CardType type);
 }

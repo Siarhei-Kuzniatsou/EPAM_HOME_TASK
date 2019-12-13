@@ -8,14 +8,13 @@ class CardDebit extends AbstractCard {
         super(name, cash, type);
     }
 
-    public String reduceCash(String name, int cash) {
-        if (iBaseCard.containCard(name)) {
-            AbstractCard card = iBaseCard.getCard(name);
-            if(card.getCash() - cash >= 0) {
-                iBaseCard.addNewCard(name, card.getCash() - cash, card.getType());
-            return "Good!";}
+        public String reduceCash( int cash) {
+
+        if(super.getCash()-cash >= 0) {
+            super.setCash(super.getCash()-cash);
+            return "GOOD!";
         }
-        return error.toString();
+        else return error.toString();
     }
 
 }

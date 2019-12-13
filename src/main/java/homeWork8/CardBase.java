@@ -10,15 +10,14 @@ public class CardBase implements IBaseCard{
 
 
     public String addNewCard(String name, int cash, CardType type) {
-        AbstractCard card = new AbstractCard(name, cash, type);
-        if (baseCard.containsKey(name)) return errorType.toString();
-        else baseCard.put(name, card);
+//        if (baseCard.containsKey(name)) return errorType.toString();
+//        else {
+//            switch (type) {
+//                case CREDIT: baseCard.put(name, new CardCredit(name, cash));
+//                case DEBIT: baseCard.put(name, new CardDebit(name, cash));
+//            }
+//        }
         return "Good!";
-    }
-
-    @Override
-    public String addNewCard(String name, int cash, String type) {
-        return null;
     }
 
     @Override
@@ -28,12 +27,12 @@ public class CardBase implements IBaseCard{
 
     @Override
     public AbstractCard getCard(String name) {
-        return null;
+        return baseCard.get(name);
     }
 
 
     public static CardBase getInstance(){
-        if (cardBase == null) return new CardBase();
-        else return cardBase;
+        if (cardBase == null) cardBase = new CardBase();
+        return cardBase;
     }
 }
