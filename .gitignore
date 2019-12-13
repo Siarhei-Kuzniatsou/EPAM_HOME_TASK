@@ -1,15 +1,15 @@
 *.iml
-*.txt
-/.idea/
-.vscode/
-# Eclipse
-.classpath
-.project
-.settings/
-.factorypath
-# Intellij
-*.iws
-# Maven
-log/
-target/
-build/
+      *.txt
+      /.idea/
+      .vscode/
+      # Eclipse
+      .classpath
+      .project
+      .settings/
+      .factorypath
+      # Intellij
+      *.iws
+      # Maven
+      log/
+      target/
+      build/
