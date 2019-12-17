@@ -29,4 +29,25 @@ public class CardTest {
         atm.addCash(10);
         Assert.assertEquals(11, debitCard.getCash());
     }
+
+    @Test
+    public void testAtm(){
+        Atm atm = new Atm();
+        AbstractCard creditCard = new CreditCard("Test", 10);
+        AbstractCard debitCard = new DebitCard("Sergei", 1);
+        AbstractCard card = new DebitCard("Sergei", 0);
+        atm.addNewCard(creditCard);
+        atm.addNewCard(debitCard);
+        atm.addNewCard(card);
+        atm.insertCard("Test");
+        atm.addCash(10);
+        Assert.assertEquals(20, creditCard.getCash());
+        atm.insertCard("Sergei");
+        atm.reduceCash(2);
+        Assert.assertEquals(1, debitCard.getCash());
+        atm.insertCard("Test");
+        atm.reduceCash(30);
+        Assert.assertEquals(-10, creditCard.getCash());
+
+    }
 }
