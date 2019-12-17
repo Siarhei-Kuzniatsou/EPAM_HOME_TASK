@@ -1,7 +1,8 @@
 package homeWork8;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CardTest {
     @Test
@@ -12,9 +13,9 @@ public class CardTest {
         atm.addNewCard(creditCard);
         atm.insertCard(name);
         atm.reduceCash(2);
-        Assert.assertEquals(-1, creditCard.getCash());
+        assertEquals(-1, creditCard.getCash());
         atm.addCash(10);
-        Assert.assertEquals(9, creditCard.getCash());
+        assertEquals(9, creditCard.getCash());
     }
 
     @Test
@@ -25,9 +26,9 @@ public class CardTest {
         atm.addNewCard(debitCard);
         atm.insertCard(name);
         atm.reduceCash(2);
-        Assert.assertEquals(1, debitCard.getCash());
+        assertEquals(1, debitCard.getCash());
         atm.addCash(10);
-        Assert.assertEquals(11, debitCard.getCash());
+        assertEquals(11, debitCard.getCash());
     }
 
     @Test
@@ -41,13 +42,13 @@ public class CardTest {
         atm.addNewCard(card);
         atm.insertCard("Test");
         atm.addCash(10);
-        Assert.assertEquals(20, creditCard.getCash());
+        assertEquals(20, creditCard.getCash());
         atm.insertCard("Sergei");
         atm.reduceCash(2);
-        Assert.assertEquals(1, debitCard.getCash());
+        assertEquals(1, debitCard.getCash());
         atm.insertCard("Test");
         atm.reduceCash(30);
-        Assert.assertEquals(-10, creditCard.getCash());
+        assertEquals(-10, creditCard.getCash());
 
     }
 }
