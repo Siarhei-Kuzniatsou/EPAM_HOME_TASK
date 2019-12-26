@@ -1,21 +1,12 @@
 package TestAutomation.emailSending;
 
-import automationHomework.Pages.InboxPage;
-import automationHomework.Pages.Letter;
-import automationHomework.Pages.MainPage;
-import automationHomework.Pages.NewLetterPage;
+import automationHomework.Pages.*;
 import org.junit.Assert;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +16,8 @@ public class TestEmailSend {
     private MainPage mainPage;
     private InboxPage inboxPage;
     private NewLetterPage newLetterPage;
+    private DraftsPage draftsPage;
+    private Letter letter;
 
     public static WebDriver driver;
 
@@ -38,6 +31,7 @@ public class TestEmailSend {
         mainPage = new MainPage(driver);
         inboxPage = new InboxPage(driver);
         newLetterPage = new NewLetterPage(driver);
+        draftsPage = new DraftsPage(driver);
     }
 
 
@@ -55,15 +49,15 @@ public class TestEmailSend {
     @Test
     void createNewEmail() throws InterruptedException {
         inboxPage.createNewLetter();
-        Letter letter = new Letter("general_ks@mail.ru", "Test", "Test");
+        letter = new Letter("general_ks@mail.ru", "Test", "Test");
         newLetterPage.fillingMessage(letter);
         newLetterPage.saveNewLetter(letter);
-        Assertions.assertTrue(driver.findElement(By.xpath("//span[contains(text(),'Test')]")).isEnabled());
-//        driver.findElement(By.xpath("//*[@id='app-canvas']/div/div[1]/div[1]/div/div[2]/div[4]/div[2]/div[1]/div[2]/div[3]/div[2]/div/div[2]/div/div/div/div/div/div[1]/div/div/div[1]/div[3]/div[3]/div[1]/div[1]/div[6]/div/div[1]/a/span/a")).click();
-        driver.findElement(By.xpath("//span[contains(text(),'Test')]")).click();
-        Assertions.assertEquals("general_ks", driver.findElement(By.xpath("/html/body/div[15]/div[2]/div/div[1]/div[2]/div[3]/div[2]/div/div/div[1]/div/div[2]/div/div[1]/div/div/span")).getText());
-        Assertions.assertEquals("Test", driver.findElement(By.xpath("/html/body/div[15]/div[2]/div/div[1]/div[2]/div[3]/div[3]/div[1]/div[2]/div/input")).getCssValue("value"));
-        Assertions.assertEquals("Test!", driver.findElement(By.xpath("//*[@id='style_15770891121113291285_BODY']/div/div/div[1]")).getText());
+        inboxPage.inDraftsGo();
+        Assertions.assertTrue(draftsPage.searchLetterByTime(letter.getDate())); //Only by time;
+        draftsPage.enterInLetter(letter.getDate());
+        Assertions.assertEquals("general_ks@mail.ru", newLetterPage.getTo());
+        Assertions.assertEquals("Test", newLetterPage.getSubject());
+        Assertions.assertEquals("Test", newLetterPage.getBody());
         Thread.sleep(2000);
     }
 
@@ -71,13 +65,9 @@ public class TestEmailSend {
     @Order(3)
     @Test
     void sendMail() throws InterruptedException {
-
-        driver.findElement(By.xpath("/html/body/div[15]/div[2]/div/div[2]/div[1]/span[1]")).click();
-        Assertions.assertFalse(driver.findElement(By.xpath("//span[contains(text(),'Test')]")).isEnabled());
-        driver.findElement(By.xpath("/html/body/div[9]/div/div/div[2]/div[2]/div/div[2]/div[4]/div[2]/div[2]/div[3]/div/div/div[1]/span")).click();
-        driver.findElement(By.xpath("//*[@id='app-canvas']/div/div[1]/div[1]/div/div[2]/div[4]/div[2]/div[1]/div[2]/div[3]/div[2]/div/div[1]/div/div/div/div[2]/div/div[1]/nav/a[4]")).click();
-        Assertions.assertEquals("Test", driver.findElement(By.xpath("//*[@id='app-canvas']/div/div[1]/div[1]/div/div[2]/div[4]/div[2]/div[1]/div[2]/div[3]/div[2]/div/div[2]/div/div/div/div/div/div[1]/div/div/div[1]/div[3]/div[3]/div[1]/div[1]/div[6]/div/div[2]/a/span/a/div[4]/div/div[3]/span[1]/span")).getText());
-        Thread.sleep(2000);
+        newLetterPage.sendNewLetter();
+        inboxPage.inDraftsGo();
+        Assertions.assertFalse(draftsPage.searchLetterByTime(letter.getDate()));
     }
 
     @DisplayName("Log off")

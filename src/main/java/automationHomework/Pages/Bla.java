@@ -7,7 +7,7 @@ public class Bla {
     public static void main(String[] args) {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
 
-        String dateString = format.format(new Date());
+        String dateString = "Today, " + format.format(new Date());
         System.out.println(dateString);
     }
 }

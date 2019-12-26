@@ -12,7 +12,11 @@ public class InboxPage {
     private WebDriver driver;
     private WebDriverWait wait;
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Compose')]")
-    private WebElement sendMessageButton;
+    private WebElement composeMessageButton;
+
+    @FindBy(how = How.XPATH, using = "//a[contains(@href,'/drafts/')]")
+    private WebElement draftsButton;
+
 
     public InboxPage(WebDriver driver) {
         this.driver = driver;
@@ -22,7 +26,7 @@ public class InboxPage {
 
     public boolean isLoaded() {
         try {
-            wait.until(ExpectedConditions.visibilityOfAllElements(sendMessageButton));
+            wait.until(ExpectedConditions.visibilityOfAllElements(composeMessageButton));
             return true;
         } catch (Exception e) {
             return false;
@@ -30,6 +34,10 @@ public class InboxPage {
     }
 
     public void createNewLetter() {
-        sendMessageButton.click();
+        composeMessageButton.click();
+    }
+
+    public void inDraftsGo(){
+        draftsButton.click();
     }
 }

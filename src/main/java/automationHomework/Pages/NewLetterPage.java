@@ -1,32 +1,33 @@
 package automationHomework.Pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class NewLetterPage {
-    @FindBy(xpath = "[class*='inputContainer']")
-    List<WebElement> inputFields;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Compose')]")
+    @FindBy(xpath = ("/html/body/div[15]/div[2]/div/div[1]/div[2]/div[3]/div[2]/div/div/div[1]/div/div[2]/div/div/label/div/div/input"))
     private WebElement to;
 
-    @FindBy(xpath = "[role*='textbox']")
+    @FindBy(xpath = ("/html/body/div[15]/div[2]/div/div[1]/div[2]/div[3]/div[3]/div[1]/div[2]/div/input"))
+    private WebElement subject;
+
+    @FindBy(xpath = "/html/body/div[15]/div[2]/div/div[1]/div[2]/div[3]/div[5]/div/div/div[2]/div[1]")
     private WebElement body;
 
     @FindBy(xpath = "[title*='Send']")
     private WebElement sendButton;
 
-    @FindBy(xpath = "[title*='Save']")
+
+    @FindBy(xpath = "/html/body/div[15]/div[2]/div/div[2]/div[1]/span[2]/span")
     private WebElement saveButton;
 
-    @FindBy(xpath = "[title*='Close']")
+    @FindBy(xpath = "/html/body/div[15]/div[2]/div/div[1]/div[2]/div[2]/div/div/button[2]")
     private WebElement closeButton;
 
 
@@ -38,15 +39,17 @@ public class NewLetterPage {
     }
 
     public void fillingMessage(Letter letter) {
-        inputFields.get(0).sendKeys(letter.getTo());
-        inputFields.get(1).sendKeys(letter.getSubject());
+        to.sendKeys(letter.getTo());
+        subject.sendKeys(letter.getSubject());
         this.body.sendKeys(letter.getBody());
     }
 
-    public void saveNewLetter(Letter letter){
+    public void saveNewLetter(Letter letter) throws InterruptedException {
         saveButton.click();
+        Thread.sleep(5000);
         letter.setDate();
         closeButton.click();
+        Thread.sleep(5000);
     }
 
     public void sendNewLetter(){
@@ -54,14 +57,17 @@ public class NewLetterPage {
         closeButton.click();
     }
 
+    public String getTo() {
+        return to.getText();
+    }
 
-//    driver.findElement(By.xpath("/html/body/div[15]/div[2]/div/div[1]/div[2]/div[3]/div[2]/div/div/div[1]/div/div[2]/div/div/label/div/div/input")).sendKeys("general_ks@mail.ru");
-//        driver.findElement(By.xpath("/html/body/div[15]/div[2]/div/div[1]/div[2]/div[3]/div[3]/div[1]/div[2]/div/input")).sendKeys("Test");
-//        driver.findElement(By.xpath("/html/body/div[15]/div[2]/div/div[1]/div[2]/div[3]/div[5]/div/div/div[2]/div[1]")).sendKeys("Test!");
-//        driver.findElement(By.xpath("/html/body/div[15]/div[2]/div/div[2]/div[1]/span[2]/span")).click();
-////        Нажимаем кнопку черновики
-//        driver.findElement(By.xpath("/html/body/div[15]/div[2]/div/div[1]/div[2]/div[2]/div/div/button[2]")).click();
-//        driver.findElement(By.xpath("//*[@id='app-canvas']/div/div[1]/div[1]/div/div[2]/div[2]/div/div[1]/div/div/div/div[2]/div/div[1]/nav/a[5]")).click();
+    public String getSubject() {
+        return subject.getText();
+    }
+
+    public String getBody() {
+        return body.getText();
+    }
 
 
 }
