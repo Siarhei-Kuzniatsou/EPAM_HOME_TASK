@@ -1,7 +1,10 @@
 package automationHomework.Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 public class DraftsPage {
 
@@ -10,9 +13,10 @@ public class DraftsPage {
     private NewLetterPage newLetterPage;
 
 
-        private String getLocateLetterByDate() {
+    private String getLocateLetterByDate() {
         return locateLetterByDate;
     }
+
     private void setLocateLetterByDate(String date) {
         locateLetterByDate = new StringBuilder()
                 .append(".//*[text()='")
@@ -22,18 +26,16 @@ public class DraftsPage {
 
     public boolean searchLetterByTime(String date){
             setLocateLetterByDate(date);
-        return driver.findElement(By.xpath(getLocateLetterByDate())).isEnabled();
+        return $(By.xpath(getLocateLetterByDate())).isEnabled();
     }
 
     public void enterInLetter(String date){
         setLocateLetterByDate(date);
-        driver.findElement(By.xpath(getLocateLetterByDate())).click();
-        this.newLetterPage = new NewLetterPage(driver);
+        $(By.xpath(getLocateLetterByDate())).click();
+        this.newLetterPage = new NewLetterPage(getWebDriver());
     }
 
     public DraftsPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(this.driver, this);
+        setWebDriver(driver);
     }
-
 }

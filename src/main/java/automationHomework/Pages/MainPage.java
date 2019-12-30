@@ -1,28 +1,19 @@
 package automationHomework.Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
+
+import static com.codeborne.selenide.Selectors.byName;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 public class MainPage {
     public static final String PASSWORD = "g1020958G";
     public static final String LOGIN = "general_ks";
     public static final String DOMAIN = "@mail.ru";
-    private WebDriver driver;
-    @FindBy(id = "mailbox:login")
-    private WebElement login;
-    @FindBy(id = "mailbox:password")
-    private WebElement password;
-    private Select domain;
-
 
     public MainPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        setWebDriver(driver);
     }
 
     public void logIn() {
@@ -32,17 +23,16 @@ public class MainPage {
     }
 
     private void enterPassword() {
-        password.sendKeys(PASSWORD, Keys.ENTER);
+        $(byName("password")).sendKeys(PASSWORD, Keys.ENTER);
     }
 
     private MainPage checkDomain() {
-        domain = new Select(driver.findElement(By.id("mailbox:domain")));
-        domain.selectByVisibleText(DOMAIN);
+        $(byName("domain")).selectOptionContainingText(DOMAIN);
         return this;
     }
 
     private MainPage enterLogin() {
-        login.sendKeys(LOGIN, Keys.ENTER);
+        $(byName("login")).sendKeys(LOGIN, Keys.ENTER);
         return this;
     }
 
