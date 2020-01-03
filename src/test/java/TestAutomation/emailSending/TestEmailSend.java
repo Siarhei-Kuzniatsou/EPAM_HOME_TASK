@@ -2,7 +2,6 @@ package TestAutomation.emailSending;
 
 import automationHomework.Pages.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
@@ -16,8 +15,8 @@ public class TestEmailSend {
     private NewLetterPage newLetterPage;
     private DraftsPage draftsPage;
     private Letter letter;
+    private SentPage sentPage;
 
-    public static WebDriver driver;
 
     @Test(description = "Login to the mail box")
     void login() throws InterruptedException {
@@ -40,7 +39,6 @@ public class TestEmailSend {
         draftsPage = new DraftsPage(getWebDriver());
         Assert.assertTrue(draftsPage.searchLetterByTime(letter.getDate())); //Only by time;
         draftsPage.enterInLetter(letter.getDate());
-//        Assert.assertEquals(letter, );
         Assert.assertEquals("general_ks@mail.ru", newLetterPage.getTo());
         Assert.assertEquals("Test", newLetterPage.getSubject());
         Assert.assertEquals("Test", newLetterPage.getBody());
@@ -49,22 +47,24 @@ public class TestEmailSend {
 
     @Test(dependsOnMethods = "createNewEmail", description = "Send the mail")
     void sendMail() throws InterruptedException {
-        newLetterPage.sendNewLetter();
+        newLetterPage.sendNewLetter(letter);
         inboxPage.inDraftsGo();
-        Assert.assertFalse(draftsPage.searchLetterByTime(letter.getDate()));
+//        Assert.assertFalse(draftsPage.searchLetterByTime(letter.getDate())); How to assert that letter had sent?
+        inboxPage.inSentPageGo();
+        sentPage = new SentPage(getWebDriver());
+        Assert.assertTrue(sentPage.searchLetterByTime(letter.getDate()));
     }
 
 
-    @Test(dependsOnMethods = "sendMail", description = "Log off")
+    @Test(dependsOnMethods = "sendMail", description = "Log Off")
     void logOff() throws InterruptedException {
-        driver.findElement(By.xpath("//*[@id='PH_logoutLink']")).click();
-        Assert.assertTrue(driver.findElement(By.xpath("//*[@id='PH_authLink']")).isEnabled());
-        Thread.sleep(2000);
+        $(By.xpath("//*[@id='PH_logoutLink']")).click();
+        Assert.assertTrue($(By.xpath("//*[@id='PH_authLink']")).isEnabled());
     }
 
     @AfterTest
     static void closeAll() {
-        driver.quit();
+        getWebDriver().quit();
     }
 
 }

@@ -29,4 +29,8 @@ public class InboxPage {
     public void inDraftsGo(){
         $(By.linkText("Drafts")).click();
     }
+
+    public void inSentPageGo(){
+        $(By.linkText("Sent")).click();
+    }
 }
