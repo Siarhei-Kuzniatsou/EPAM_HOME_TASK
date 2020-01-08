@@ -1,6 +1,7 @@
 package TestAutomation.emailSending;
 
 import automationHomework.Pages.*;
+
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -39,6 +40,7 @@ public class TestEmailSend {
         draftsPage = new DraftsPage(getWebDriver());
         Assert.assertTrue(draftsPage.searchLetterByTime(letter.getDate())); //Only by time;
         draftsPage.enterInLetter(letter.getDate());
+
         Assert.assertEquals("general_ks@mail.ru", newLetterPage.getTo());
         Assert.assertEquals("Test", newLetterPage.getSubject());
         Assert.assertEquals("Test", newLetterPage.getBody());
@@ -49,7 +51,7 @@ public class TestEmailSend {
     void sendMail() throws InterruptedException {
         newLetterPage.sendNewLetter(letter);
         inboxPage.inDraftsGo();
-//        Assert.assertFalse(draftsPage.searchLetterByTime(letter.getDate())); How to assert that letter had sent?
+//       Assert.assertFalse( draftsPage.checkLetterSent(letter.getDate())); //How to assert that letter had sent?
         inboxPage.inSentPageGo();
         sentPage = new SentPage(getWebDriver());
         Assert.assertTrue(sentPage.searchLetterByTime(letter.getDate()));

@@ -12,7 +12,7 @@ public class SentPage {
         setWebDriver(driver);
     }
 
-    public boolean searchLetterByTime(String date) {
+    public boolean searchLetterByTime(String date) throws InterruptedException {
         String locateLetterByDate = new StringBuilder()
                 .append("//div[text()='")
                 .append(date)

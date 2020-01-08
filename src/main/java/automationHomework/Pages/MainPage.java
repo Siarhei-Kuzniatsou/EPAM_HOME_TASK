@@ -1,10 +1,12 @@
 package automationHomework.Pages;
 
+import automationHomework.Services.HighlightElement;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 public class MainPage {
@@ -23,15 +25,30 @@ public class MainPage {
     }
 
     private void enterPassword() {
+        try {
+            new HighlightElement(getWebDriver()).highlightElementYellow($(byName("password")));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         $(byName("password")).sendKeys(PASSWORD, Keys.ENTER);
     }
 
     private MainPage checkDomain() {
+        try {
+            new HighlightElement(getWebDriver()).highlightElementYellow($(byName("domain")));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         $(byName("domain")).selectOptionContainingText(DOMAIN);
         return this;
     }
 
     private MainPage enterLogin() {
+        try {
+            new HighlightElement(getWebDriver()).highlightElementYellow($(byName("login")));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         $(byName("login")).sendKeys(LOGIN, Keys.ENTER);
         return this;
     }

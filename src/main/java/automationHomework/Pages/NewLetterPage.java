@@ -1,7 +1,5 @@
 package automationHomework.Pages;
 
-
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
