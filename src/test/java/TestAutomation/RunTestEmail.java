@@ -3,9 +3,8 @@ package TestAutomation;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
+import org.junit.After;
 import org.junit.runner.RunWith;
-import org.testng.annotations.AfterTest;
-
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 @RunWith(Cucumber.class)
@@ -18,8 +17,9 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
         features = "C:/Users/Siarhei_Kuzniatsou1/Desktop/repos/EPAM_HOME_TASK/src/main/resourcesForTest/mailTest"
 )
 public class RunTestEmail {
-        @AfterTest
-        static void closeBrowser(){
+
+        @After
+        public void closeBrowser(){
                 getWebDriver().quit();
         }
 }
