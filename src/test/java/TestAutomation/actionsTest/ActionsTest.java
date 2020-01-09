@@ -30,7 +30,6 @@ public class ActionsTest {
             e.printStackTrace();
         }
         input.click();
-
         Action action = builder
                 .sendKeys(input, ERRORLOGIN)
                 .doubleClick()

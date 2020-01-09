@@ -14,7 +14,9 @@ public class HighlightElement {
     public void highlightElementYellow(SelenideElement element) throws InterruptedException {
         String bg = element.getCssValue("background");
         jsExec.executeScript("arguments[0].style.background = 'yellow'", element);
+        jsExec.executeScript("alert('Background Yellow');");
         jsExec.executeScript("arguments[0].style.background = '" + bg + "'", element);
+        jsExec.executeScript("alert('Background Default');");
     }
 
 }
