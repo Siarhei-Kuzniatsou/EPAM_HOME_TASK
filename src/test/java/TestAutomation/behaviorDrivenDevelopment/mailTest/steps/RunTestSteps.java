@@ -7,25 +7,24 @@ import cucumber.api.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 
-public class RunTest {
+public class RunTestSteps {
 
-    private  Letter letter;
-    private  NewLetterPage newLetterPage;
-    private  InboxPage inboxPage;
-    private  DraftsPage draftsPage;
+    private Letter letter;
+    private NewLetterPage newLetterPage;
+    private InboxPage inboxPage;
+    private DraftsPage draftsPage;
     private SentPage sentPage;
+
 
     @Given("^I login as general_ks@mail\\.ru$")
     public void iLoginAsGeneral_ksMailRu() {
         open("http://www.mail.ru/");
         getWebDriver().manage().window().maximize();
-
     }
 
     @When("^I do login$")
@@ -34,7 +33,8 @@ public class RunTest {
     }
 
     @Then("^the button \"([^\"]*)\" should be visible$")
-    public void theButtonShouldBeVisible(String arg0) throws Throwable {
+    public void theButtonShouldBeVisible(String arg0) {
+
         inboxPage = new InboxPage(getWebDriver());
         Assertions.assertTrue(inboxPage.isLoaded());
     }
@@ -64,7 +64,7 @@ public class RunTest {
     }
 
     @Given("^Sent letter of Drafts$")
-    public void sentLetterOfDrafts(){
+    public void sentLetterOfDrafts() {
     }
 
     @When("^Go to Drafts, check letter and send$")
@@ -92,4 +92,6 @@ public class RunTest {
     public void buttonLoginCanBeVisible() {
         Assert.assertTrue($(By.xpath("//*[@id='PH_authLink']")).isEnabled());
     }
+
+
 }

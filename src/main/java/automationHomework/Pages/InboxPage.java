@@ -1,6 +1,6 @@
 package automationHomework.Pages;
 
-import automationHomework.Services.HighlightElement;
+import automationHomework.Services.Highlight;
 import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +26,7 @@ public class InboxPage {
 
     public void createNewLetter() {
         try {
-            new HighlightElement(getWebDriver()).highlightElementYellow($(By.className("compose-button__wrapper")));
+            new Highlight(getWebDriver()).highlightElement($(By.className("compose-button__wrapper")));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -35,7 +35,7 @@ public class InboxPage {
 
     public void inDraftsGo(){
         try {
-            new HighlightElement(getWebDriver()).highlightElementYellow($(By.linkText("Drafts")));
+            new Highlight(getWebDriver()).highlightElement($(By.linkText("Drafts")));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -44,7 +44,7 @@ public class InboxPage {
 
     public void inSentPageGo(){
         try {
-            new HighlightElement(getWebDriver()).highlightElementYellow($(By.linkText("Sent")));
+            new Highlight(getWebDriver()).highlightElement($(By.linkText("Sent")));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

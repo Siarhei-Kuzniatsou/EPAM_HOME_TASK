@@ -1,14 +1,12 @@
 package automationHomework.Pages;
 
-import automationHomework.Services.HighlightElement;
-import com.codeborne.selenide.Condition;
+import automationHomework.Services.Highlight;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
-
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
@@ -50,7 +48,7 @@ public class DraftsPage {
     public void enterInLetter(String date) {
         setLocateLetterByDate(date);
         try {
-            new HighlightElement(getWebDriver()).highlightElementYellow($(By.xpath(getLocateLetterByDate())));
+            new Highlight(getWebDriver()).highlightElement($(By.xpath(getLocateLetterByDate())));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

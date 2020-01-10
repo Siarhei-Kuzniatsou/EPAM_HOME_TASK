@@ -10,10 +10,10 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         strict = true,
-        plugin = {
-                "pretty", "json:target/Cucumber.json",
-                "html:target/cucumber-html-report"
-        },
+//        plugin = {
+//                "pretty", "json:target/Cucumber.json",
+//                "html:target/cucumber-html-report"
+//        },
         features = "C:/Users/Siarhei_Kuzniatsou1/Desktop/repos/EPAM_HOME_TASK/src/main/resourcesForTest/mailTest"
 )
 public class RunTestEmail {

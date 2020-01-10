@@ -2,7 +2,8 @@ package TestAutomation.actionsTest;
 
 import automationHomework.Pages.InboxPage;
 import automationHomework.Pages.MainPage;
-import automationHomework.Services.HighlightElement;
+import automationHomework.Services.Colors;
+import automationHomework.Services.Highlight;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -25,7 +26,7 @@ public class ActionsTest {
         Actions builder = new Actions(getWebDriver());
         SelenideElement input = $(By.id("mailbox:login"));
         try {
-            new HighlightElement(getWebDriver()).highlightElementYellow(input);
+            new Highlight(getWebDriver(), Colors.RED).highlightElement(input);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -1,6 +1,6 @@
 package automationHomework.Pages;
 
-import automationHomework.Services.HighlightElement;
+import automationHomework.Services.Highlight;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
@@ -26,7 +26,7 @@ public class MainPage {
 
     private void enterPassword() {
         try {
-            new HighlightElement(getWebDriver()).highlightElementYellow($(byName("password")));
+            new Highlight(getWebDriver()).highlightElement($(byName("password")));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -35,7 +35,7 @@ public class MainPage {
 
     private MainPage checkDomain() {
         try {
-            new HighlightElement(getWebDriver()).highlightElementYellow($(byName("domain")));
+            new Highlight(getWebDriver()).highlightElement($(byName("domain")));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -45,7 +45,7 @@ public class MainPage {
 
     private MainPage enterLogin() {
         try {
-            new HighlightElement(getWebDriver()).highlightElementYellow($(byName("login")));
+            new Highlight(getWebDriver()).highlightElement($(byName("login")));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

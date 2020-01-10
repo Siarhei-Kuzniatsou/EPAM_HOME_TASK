@@ -35,10 +35,10 @@
         </dependency>
 
         <dependency>
-        <groupId>org.xerial</groupId>
-        <artifactId>sqlite-jdbc</artifactId>
-        <version>3.7.2</version>
-    </dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.7.2</version>
+        </dependency>
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -64,26 +64,6 @@
             <version>5.6.0</version>
             <scope>compile</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-junit -->
-<!--        <dependency>-->
-<!--            <groupId>info.cukes</groupId>-->
-<!--            <artifactId>cucumber-java</artifactId>-->
-<!--            <version>1.2.4</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>info.cukes</groupId>-->
-<!--            <artifactId>cucumber-junit</artifactId>-->
-<!--            <version>1.2.4</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>info.cukes</groupId>-->
-<!--            <artifactId>cucumber-java8</artifactId>-->
-<!--            <version>1.2.5</version>-->
-<!--        </dependency>-->
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -103,6 +83,7 @@
             <version>1.2.6</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
 
