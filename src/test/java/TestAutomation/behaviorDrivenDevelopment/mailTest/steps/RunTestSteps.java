@@ -8,6 +8,8 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -102,6 +104,17 @@ public class RunTestSteps {
     public void theShouldBeVisible(String button) {
         new Highlight(getWebDriver(), Colors.GREEN).highlightElement($(By.xpath("//div[text()='" + button + "']")));
         Assertions.assertTrue($(By.xpath("//div[text()='" + button + "']")).isEnabled());
+
+//        ________________LOGGER_____________________
+        Logger logger = LogManager.getRootLogger();
+        logger.debug("Debug message");
+        logger.info("Info message");
+        logger.fatal("Fatal message");
+        logger.error("Error message");
+        logger.warn("Warn message");
+
+//        ____________________________________________
+
     }
 
     @Given("^I check buttons$")
