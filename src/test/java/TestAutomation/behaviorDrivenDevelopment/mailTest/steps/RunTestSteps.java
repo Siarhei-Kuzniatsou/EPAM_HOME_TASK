@@ -1,6 +1,10 @@
 package TestAutomation.behaviorDrivenDevelopment.mailTest.steps;
 
 import automationHomework.Pages.*;
+
+import automationHomework.Services.Colors;
+import automationHomework.Services.Highlight;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -32,6 +36,7 @@ public class RunTestSteps {
         new MainPage(getWebDriver()).logIn();
     }
 
+
     @Then("^the button \"([^\"]*)\" should be visible$")
     public void theButtonShouldBeVisible(String arg0) {
 
@@ -53,7 +58,7 @@ public class RunTestSteps {
     }
 
     @Then("^new letter can be into drafts and has all fields filling$")
-    public void newLetterCanBeIntoDraftsAndHasAllFieldsFilling() throws InterruptedException {
+    public void newLetterCanBeIntoDraftsAndHasAllFieldsFilling() {
         inboxPage.inDraftsGo();
         draftsPage = new DraftsPage(getWebDriver());
         Assert.assertTrue(draftsPage.searchLetterByTime(letter.getDate())); //Only by time;
@@ -93,5 +98,37 @@ public class RunTestSteps {
         Assert.assertTrue($(By.xpath("//*[@id='PH_authLink']")).isEnabled());
     }
 
+    @Then("^the \"([^\"]*)\" should be visible$")
+    public void theShouldBeVisible(String button) {
+        new Highlight(getWebDriver(), Colors.GREEN).highlightElement($(By.xpath("//div[text()='" + button + "']")));
+        Assertions.assertTrue($(By.xpath("//div[text()='" + button + "']")).isEnabled());
+    }
 
+    @Given("^I check buttons$")
+    public void iCheckButtons() {
+
+    }
+
+    @Given("^I login on mail\\.ru$")
+    public void iLoginOnMailRu() {
+        open("http://www.mail.ru/");
+        getWebDriver().manage().window().maximize();
+        new MainPage(getWebDriver()).logIn();
+    }
+
+    @Given("^GetDriver$")
+    public void getdriver() {
+        open("http://www.mail.ru/");
+        getWebDriver().manage().window().maximize();
+    }
+
+    @When("^Got to Mail\\.ru$")
+    public void gotToMailRu() {
+
+    }
+
+    @And("^Close Browser$")
+    public void closeBrowser() {
+        getWebDriver().quit();
+    }
 }

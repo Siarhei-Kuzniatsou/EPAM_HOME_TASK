@@ -22,7 +22,7 @@ public class Highlight {
         jsExec = (JavascriptExecutor) driver;
     }
 
-    public void highlightElement(SelenideElement element) throws InterruptedException {
+    public void highlightElement(SelenideElement element) {
         String bg = element.getCssValue("background");
         jsExec.executeScript("arguments[0].style.background = '" + color + "'", element);
         sleep(1000);

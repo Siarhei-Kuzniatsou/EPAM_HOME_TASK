@@ -1,8 +1,10 @@
 package automationHomework.Pages;
 
 import automationHomework.Services.Highlight;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
@@ -25,30 +27,18 @@ public class MainPage {
     }
 
     private void enterPassword() {
-        try {
-            new Highlight(getWebDriver()).highlightElement($(byName("password")));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        new Highlight(getWebDriver()).highlightElement($(byName("password")));
         $(byName("password")).sendKeys(PASSWORD, Keys.ENTER);
     }
 
     private MainPage checkDomain() {
-        try {
-            new Highlight(getWebDriver()).highlightElement($(byName("domain")));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        new Highlight(getWebDriver()).highlightElement($(byName("domain")));
         $(byName("domain")).selectOptionContainingText(DOMAIN);
         return this;
     }
 
     private MainPage enterLogin() {
-        try {
-            new Highlight(getWebDriver()).highlightElement($(byName("login")));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        new Highlight(getWebDriver()).highlightElement($(byName("login")));
         $(byName("login")).sendKeys(LOGIN, Keys.ENTER);
         return this;
     }

@@ -1,12 +1,10 @@
 package TestAutomation.emailSending;
 
 import automationHomework.Pages.*;
-
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
-
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -20,7 +18,7 @@ public class TestEmailSend {
 
 
     @Test(description = "Login to the mail box")
-    void login() throws InterruptedException {
+    void login() {
         open("http://www.mail.ru/");
         getWebDriver().manage().window().maximize();
         mainPage = new MainPage(getWebDriver());
@@ -40,7 +38,6 @@ public class TestEmailSend {
         draftsPage = new DraftsPage(getWebDriver());
         Assert.assertTrue(draftsPage.searchLetterByTime(letter.getDate())); //Only by time;
         draftsPage.enterInLetter(letter.getDate());
-
         Assert.assertEquals("general_ks@mail.ru", newLetterPage.getTo());
         Assert.assertEquals("Test", newLetterPage.getSubject());
         Assert.assertEquals("Test", newLetterPage.getBody());
@@ -59,7 +56,7 @@ public class TestEmailSend {
 
 
     @Test(dependsOnMethods = "sendMail", description = "Log Off")
-    void logOff() throws InterruptedException {
+    void logOff() {
         $(By.xpath("//*[@id='PH_logoutLink']")).click();
         Assert.assertTrue($(By.xpath("//*[@id='PH_authLink']")).isEnabled());
     }
@@ -68,5 +65,4 @@ public class TestEmailSend {
     static void closeAll() {
         getWebDriver().quit();
     }
-
 }

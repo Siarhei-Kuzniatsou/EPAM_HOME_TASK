@@ -25,11 +25,7 @@ public class ActionsTest {
         getWebDriver().manage().window().maximize();
         Actions builder = new Actions(getWebDriver());
         SelenideElement input = $(By.id("mailbox:login"));
-        try {
-            new Highlight(getWebDriver(), Colors.RED).highlightElement(input);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        new Highlight(getWebDriver(), Colors.RED).highlightElement(input);
         input.click();
         Action action = builder
                 .sendKeys(input, ERRORLOGIN)

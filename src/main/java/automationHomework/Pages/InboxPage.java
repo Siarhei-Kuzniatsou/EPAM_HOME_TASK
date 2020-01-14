@@ -25,29 +25,17 @@ public class InboxPage {
     }
 
     public void createNewLetter() {
-        try {
-            new Highlight(getWebDriver()).highlightElement($(By.className("compose-button__wrapper")));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        new Highlight(getWebDriver()).highlightElement($(By.className("compose-button__wrapper")));
         $(By.className("compose-button__wrapper")).click();
     }
 
     public void inDraftsGo(){
-        try {
-            new Highlight(getWebDriver()).highlightElement($(By.linkText("Drafts")));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        new Highlight(getWebDriver()).highlightElement($(By.linkText("Drafts")));
         $(By.linkText("Drafts")).click();
     }
 
     public void inSentPageGo(){
-        try {
-            new Highlight(getWebDriver()).highlightElement($(By.linkText("Sent")));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        new Highlight(getWebDriver()).highlightElement($(By.linkText("Sent")));
         $(By.linkText("Sent")).click();
     }
 }
