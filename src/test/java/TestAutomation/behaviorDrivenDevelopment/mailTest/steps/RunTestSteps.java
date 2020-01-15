@@ -1,7 +1,6 @@
 package TestAutomation.behaviorDrivenDevelopment.mailTest.steps;
 
 import automationHomework.Pages.*;
-
 import automationHomework.Services.Colors;
 import automationHomework.Services.Highlight;
 import cucumber.api.java.en.And;
