@@ -130,6 +130,7 @@ public class RunTestSteps {
 
     @Given("^GetDriver$")
     public void getdriver() {
+        System.setProperty("wdm.targetPath", "src/main/resourcesForTest");
         open("http://www.mail.ru/");
         getWebDriver().manage().window().maximize();
     }

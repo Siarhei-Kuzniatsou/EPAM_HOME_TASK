@@ -1,5 +1,6 @@
 package TestAutomation;
 
+import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.*;
@@ -9,7 +10,8 @@ public class RestAssuredTest {
 
     @Test
     public void testJSONPlaceholder(){
-        given().when().get("https://jsonplaceholder.typicode.com/albums").then().statusCode(200);
+        Response response = given().when().get("https://jsonplaceholder.typicode.com/albums").then().extract().response();
+//        response.as(RestAssuredForMyTest.class);
     }
 
     @Test
