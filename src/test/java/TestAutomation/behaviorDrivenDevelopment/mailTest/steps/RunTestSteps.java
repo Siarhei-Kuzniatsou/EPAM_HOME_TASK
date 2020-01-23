@@ -3,6 +3,7 @@ package TestAutomation.behaviorDrivenDevelopment.mailTest.steps;
 import automationHomework.Pages.*;
 import automationHomework.Services.Colors;
 import automationHomework.Services.Highlight;
+import com.codeborne.selenide.Configuration;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -11,6 +12,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -130,7 +133,12 @@ public class RunTestSteps {
 
     @Given("^GetDriver$")
     public void getdriver() {
-        System.setProperty("wdm.targetPath", "src/main/resourcesForTest");
+//        ChromeOptions chromeOptions= new ChromeOptions();
+//        chromeOptions.setBinary("C:\\ThePAthtoChrome.exe");
+//
+//        ChromeDriver driver = new ChromeDriver(chromeOptions);
+//        System.setProperty("wdm.targetPath", "src/main/resourcesForTest");
+        Configuration.headless = true;
         open("http://www.mail.ru/");
         getWebDriver().manage().window().maximize();
     }
