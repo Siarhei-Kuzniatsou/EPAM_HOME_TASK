@@ -138,7 +138,7 @@ public class RunTestSteps {
 //
 //        ChromeDriver driver = new ChromeDriver(chromeOptions);
 //        System.setProperty("wdm.targetPath", "src/main/resourcesForTest");
-        Configuration.headless = true;
+//        Configuration.headless = true;
         open("http://www.mail.ru/");
         getWebDriver().manage().window().maximize();
     }
